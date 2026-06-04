@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joachim Malherbe - Instructional Designer for Microsoft</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0078d4;
+            --primary-dark: #1084d7;
+            --accent: #50e6ff;
+            --success: #107c10;
+            --bg-dark: #f3f2f1;
+            --bg-light: #ffffff;
+            --text-primary: #323130;
+            --text-secondary: #666666;
+            --border: #d2d0ce;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-dark: #2d2d30;
+                --bg-light: #3e3e42;
+                --text-primary: #ffffff;
+                --text-secondary: #d0d0d0;
+                --border: #555555;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 30px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 120, 212, 0.3);
+            text-align: center;
+        }
+
+        header .name {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        header .pronouns {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        header .title {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 30px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        header .subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SKILL CONNECTOR SECTION */
+        .connector-section {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .connector-title {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+        }
+
+        .skill-connector {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .skill-pillar {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(0, 120, 212, 0.1) 0%, rgba(80, 230, 255, 0.1) 100%);
+            border: 2px solid var(--primary);
+        }
+
+        .pillar-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .pillar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .pillar-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .connector-lines {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        /* CERTIFICATIONS GRID */
+        .certifications-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .cert-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 120, 212, 0.2);
+        }
+
+        .cert-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px;
+        }
+
+        .cert-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .cert-issuer {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .cert-body {
+            padding: 20px;
+        }
+
+        .cert-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .cert-date {
+            color: var(--text-secondary);
+        }
+
+        .cert-duration {
+            background: var(--bg-dark);
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .skills-section {
+            margin-bottom: 15px;
+        }
+
+        .skills-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: #e8f4fd;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .skill-tag {
+                background: rgba(0, 120, 212, 0.2);
+            }
+        }
+
+        .roles-section {
+            margin-bottom: 15px;
+        }
+
+        .roles-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .roles-list {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .roles-list li {
+            margin-bottom: 5px;
+            margin-left: 20px;
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: gap 0.3s;
+            margin-top: 10px;
+        }
+
+        .cert-link:hover {
+            gap: 12px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header .name {
+                font-size: 32px;
+            }
+
+            header .title {
+                font-size: 20px;
+            }
+
+            .skill-connector {
+                flex-direction: column;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .connector-lines {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="name">Joachim (Frederick) Malherbe</div>
+            <div class="pronouns">He/Him</div>
+            <div class="title">Instructional Designer for Microsoft</div>
+            <div class="subtitle">
+                Learning Experience Designer | AI-Driven Learning Developer<br>
+                <strong>Specializing in Copilot-Enabled Training & AI-Powered Learning Experiences</strong>
+            </div>
+        </header>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Featured Certifications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">368+</div>
+                <div class="stat-label">Total Professional Certifications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">22</div>
+                <div class="stat-label">Core Competencies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Exam Pass Rate</div>
+            </div>
+        </div>
+
+        <!-- SKILL CONNECTOR -->
+        <div class="connector-section">
+            <div class="connector-title">🎯 Strategic Expertise Framework</div>
+            
+            <div class="skill-connector">
+                <div class="skill-pillar">
+                    <div class="pillar-icon">🎓</div>
+                    <div class="pillar-title">Learning Design</div>
+                    <div class="pillar-description">
+                        Instructional strategy, curriculum design, learning experience optimization
+                    </div>
+                </div>
+
+                <div style="font-size: 24px; color: var(--primary);">↔️</div>
+
+                <div class="skill-pillar">
+                    <div class="pillar-icon">🤖</div>
+                    <div class="pillar-title">AI & Copilot</div>
+                    <div class="pillar-description">
+                        Generative AI, prompt engineering, AI-powered automation, productivity tools
+                    </div>
+                </div>
+
+                <div style="font-size: 24px; color: var(--primary);">↔️</div>
+
+                <div class="skill-pillar">
+                    <div class="pillar-icon">📊</div>
+                    <div class="pillar-title">Project Leadership</div>
+                    <div class="pillar-description">
+                        Project management, team collaboration, strategic planning, execution
+                    </div>
+                </div>
+            </div>
+
+            <div class="connector-lines">
+                ↓<br>
+                <strong style="font-size: 16px;">Transforming Learning with AI at Enterprise Scale</strong>
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div class="certifications-section">
+            <div class="section-title">✅ Microsoft Professional Certifications</div>
+            <div class="certs-grid" id="certsContainer"></div>
+        </div>
+
+        <footer>
+            <p>🚀 Portfolio built to showcase expertise in modern, AI-enabled instructional design</p>
+            <p>Demonstrating how Learning Design, AI Innovation, and Strategic Leadership converge</p>
+        </footer>
+    </div>
+
+    <script>
+        // Your certifications data
+        const certifications = [
+            {
+                id: 1,
+                title: "Responsible AI in a Global Context Professional Certificate",
+                issuer: "United Nations University (UNU) & Microsoft & LinkedIn",
+                type: "Professional Certificate",
+                duration: "3h 49m",
+                completionDate: "May 20, 2026",
+                skills: ["Responsible AI", "Artificial Intelligence (AI)", "AI Policy, Governance, and Regulation"],
+                roles: ["Design ethical AI-powered learning experiences", "Teach teams about responsible AI implementation", "Create governance frameworks for organizational AI training", "Advise on AI policy and ethics in learning design"],
+                link: "https://www.linkedin.com/learning/certificates/1ee917b376f65c07f698b56782b15a9d1c43917a0e5ff9be6f01d912882e011f",
+                category: "AI & Responsibility"
+            },
+            {
+                id: 2,
+                title: "Microsoft 365 Copilot Essentials Professional Certificate",
+                issuer: "Microsoft & LinkedIn",
+                type: "Professional Certificate",
+                duration: "3h 22m",
+                completionDate: "March 30, 2026",
+                skills: ["Microsoft Copilot", "AI Productivity", "Artificial Intelligence (AI)"],
+                roles: ["Teach teams to use Microsoft Copilot in daily workflows", "Implement Copilot for productivity improvement in learning design", "Design Copilot-enhanced learning and training solutions", "Train professionals on AI productivity tools and prompt engineering"],
+                link: "https://www.linkedin.com/learning/certificates/6d68977a1dbb41dcf948b56a02e06014798bb9361f75235fd7de16b052516a58",
+                category: "Microsoft & Copilot"
+            },
+            {
+                id: 3,
+                title: "AI for Managers by Microsoft and LinkedIn",
+                issuer: "Microsoft & LinkedIn",
+                type: "Professional Certificate",
+                duration: "4h 34m",
+                completionDate: "March 17, 2026",
+                skills: ["AI for Business", "Cross-team Collaboration", "AI Productivity", "People Management", "Critical Thinking"],
+                roles: ["Lead teams through AI transformation and adoption", "Manage AI implementation projects with cross-functional teams", "Coach leaders on practical AI applications for business", "Drive organizational change and culture shift with AI", "Mentor teams on critical thinking and decision-making with AI tools"],
+                link: "https://www.linkedin.com/learning/certificates/ca63a6767c7f1786aacd2275ebdf74018c87e4275d2521ee788e863ea623de1",
+                category: "Microsoft & Leadership"
+            },
+            {
+                id: 4,
+                title: "Microsoft Azure AI Essentials Professional Certificate",
+                issuer: "Microsoft & LinkedIn",
+                type: "Professional Certificate",
+                duration: "3h 23m",
+                completionDate: "January 30, 2026",
+                skills: ["Azure AI Studio", "Machine Learning", "Generative AI", "Natural Language Processing (NLP)", "Microsoft Azure"],
+                roles: ["Build AI solutions using Azure AI services for learning applications", "Develop machine learning models for instructional design", "Create generative AI-powered learning experiences at scale", "Implement NLP for intelligent, personalized learning systems", "Design enterprise AI solutions for organizational training"],
+                link: "https://www.linkedin.com/learning/certificates/007a47ba1a633559c31a9bdbee96b1fd6d2082dc9ef36f2510a8e8ade9d3814e",
+                category: "Azure & Machine Learning"
+            },
+            {
+                id: 5,
+                title: "Career Essentials in Project Management by Microsoft and LinkedIn",
+                issuer: "Microsoft & LinkedIn",
+                type: "Professional Certificate",
+                duration: "13h",
+                completionDate: "December 16, 2025",
+                skills: ["Budget Development", "Project Management", "Project Communications", "Project Scheduling", "Requirements Management"],
+                roles: ["Manage learning design projects from concept to delivery", "Lead cross-functional teams on instructional initiatives", "Budget and allocate resources for training programs", "Communicate project status and requirements to stakeholders", "Schedule and coordinate complex learning implementations"],
+                link: "https://www.linkedin.com/learning/certificates/ad275070072005b092d84aec76a0dd61216e8fb4ff4c79bde54444dadf032541",
+                category: "Project Management"
+            },
+            {
+                id: 6,
+                title: "Build Your Generative AI Productivity Skills with Microsoft and LinkedIn",
+                issuer: "Microsoft & LinkedIn",
+                type: "Professional Certificate",
+                duration: "5h 17m",
+                completionDate: "November 6, 2025",
+                skills: ["AI Productivity", "Generative AI", "AI for Business", "Productivity Improvement", "Prompt Engineering"],
+                roles: ["Build AI-powered learning solutions using generative AI", "Improve instructional design productivity with AI automation", "Create prompt engineering strategies for learning content", "Develop AI-enhanced training materials and courses at scale", "Implement generative AI for personalized learning experiences"],
+                link: "https://www.linkedin.com/learning/certificates/7bf6860fc22b04130bed8df0e122a4b12d1830fa9da5e632a21b1f470a8d11bb",
+                category: "Generative AI & Productivity"
+            }
+        ];
+
+        // Render certifications
+        function renderCertifications() {
+            const container = document.getElementById('certsContainer');
+            
+            certifications.forEach(cert => {
+                const card = document.createElement('div');
+                card.className = 'cert-card';
+                
+                card.innerHTML = `
+                    <div class="cert-header">
+                        <div class="cert-title">${cert.title}</div>
+                        <div class="cert-issuer">${cert.issuer}</div>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-meta">
+                            <span class="cert-date">${cert.completionDate}</span>
+                            <span class="cert-duration">${cert.duration}</span>
+                        </div>
+                        
+                        <div class="skills-section">
+                            <div class="skills-label">Skills Gained</div>
+                            <div class="skills-list">
+                                ${cert.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="roles-section">
+                            <div class="roles-label">Professional Applications</div>
+                            <ul class="roles-list">
+                                ${cert.roles.map(role => `<li>${role}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <a href="${cert.link}" target="_blank" class="cert-link">
+                            View Certificate <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize
+        renderCertifications();
+    </script>
+</body>
+</html>
