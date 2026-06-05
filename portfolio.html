@@ -389,7 +389,7 @@
                 <div class="stat-label">Total Professional Certifications</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">22</div>
+                <div class="stat-number" id="competenciesCount">22</div>
                 <div class="stat-label">Core Competencies</div>
             </div>
         </div>
@@ -463,6 +463,13 @@
                 
                 // Update stats
                 document.getElementById('featuredCount').textContent = certifications.length;
+                
+                // Calculate unique core competencies (skills)
+                const uniqueSkills = new Set();
+                certifications.forEach(cert => {
+                    cert.skills.forEach(skill => uniqueSkills.add(skill));
+                });
+                document.getElementById('competenciesCount').textContent = uniqueSkills.size;
                 
                 // Hide loading message
                 document.getElementById('loadingMessage').style.display = 'none';
